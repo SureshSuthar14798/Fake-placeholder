@@ -1,0 +1,58 @@
+<html>
+    <style>
+        .center{
+            height: 100vh;
+            display: flex;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            align-items: center;
+            justify-content: center;
+        }
+        input{
+            width: 400px;
+            outline: none;
+            padding: 20px;
+            font-size: 20px;
+            border-radius: 20px;
+            border: 1px solid #000;
+        }
+        .inputbox{
+            position: relative;
+        }
+        .inputbox p {
+            top: 50%;
+            padding: 0;
+            margin: 0;
+            left: 22px;
+            color: #000;
+            position: absolute;
+            pointer-events: none;
+            transform: translateY(-50%);
+        }
+    </style>
+    <body>
+        <div class="center">
+            <div class="inputbox">
+                <input type="text" class="input_text">
+                <p>Enter Name </p>
+            </div>
+        </div>
+    </body>
+    <script src="jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            function fake_placeholder(event){
+                var input = $(this);
+                setTimeout(function(){
+                    var input_val = input.val();
+                    if(input_val != ""){
+                        $(input).next().css("opacity","0");
+                    }else{
+                        $(input).next().css("opacity","1");
+                    }
+                },1)
+            }
+            $("input").keydown(fake_placeholder);
+            // $("input").change(fake_placeholder);
+        })
+    </script>
+</html>
